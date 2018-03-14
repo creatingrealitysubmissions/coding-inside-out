@@ -7,6 +7,13 @@ public class VRUIInput : MonoBehaviour
 {
     private SteamVR_LaserPointer laserPointer;
     private SteamVR_TrackedController trackedController;
+    public Color activeColor;
+    public Color transparentColor;
+
+    private void Start()
+    {
+        laserPointer.color = transparentColor;
+    }
 
     private void OnEnable()
     {
@@ -40,6 +47,7 @@ public class VRUIInput : MonoBehaviour
         {
             button.Select();
             Debug.Log("HandlePointerIn", e.target.gameObject);
+            laserPointer.color = activeColor;
         }
     }
 
@@ -51,6 +59,7 @@ public class VRUIInput : MonoBehaviour
         {
             EventSystem.current.SetSelectedGameObject(null);
             Debug.Log("HandlePointerOut", e.target.gameObject);
+            laserPointer.color = transparentColor;
         }
     }
 }
