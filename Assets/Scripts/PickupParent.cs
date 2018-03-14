@@ -9,6 +9,8 @@ public class PickupParent : MonoBehaviour {
     SteamVR_TrackedObject trackedObj;
     SteamVR_Controller.Device device;
     public Transform sphere;
+    public Transform player;
+
 
 
     void Awake () {
@@ -70,7 +72,16 @@ public class PickupParent : MonoBehaviour {
         }
     }
 
-     void tossObject(Rigidbody rigidbody)
+    private void OnTriggerExit(Collider col)
+    {
+        if (col.name == "stair")
+        {
+            player.transform.position = new Vector3(-3.7f, 1.25f, -10.9f);
+        }
+
+    }
+
+    void tossObject(Rigidbody rigidbody)
     {
         Transform origin = trackedObj.origin ? trackedObj.origin : trackedObj.transform.parent;
         if (origin != null)
