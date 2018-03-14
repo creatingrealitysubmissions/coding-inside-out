@@ -55,20 +55,22 @@ public class PickupParent : MonoBehaviour {
 
     void OnTriggerStay(Collider col)
     {
-        Debug.Log("You have collided with " + col.name + " and activated OnTriggerStay.");
-        if (device.GetTouch(SteamVR_Controller.ButtonMask.Trigger))
-        {
-            Debug.Log("You have collided with " + col.name + " while holding down touch.");
-            col.attachedRigidbody.isKinematic = true;
-            col.gameObject.transform.SetParent(this.gameObject.transform);
-        }
-        if (device.GetTouchUp(SteamVR_Controller.ButtonMask.Trigger))
-        {
-            Debug.Log("You have released touch while colliding with " + col.name);
-            col.gameObject.transform.SetParent(null);
-            col.attachedRigidbody.isKinematic = false;
+        if (col.name == "stair") {
+            Debug.Log("You have collided with " + col.name + " and activated OnTriggerStay.");
+            if (device.GetTouch(SteamVR_Controller.ButtonMask.Trigger))
+            {
+                Debug.Log("You have collided with " + col.name + " while holding down touch.");
+                col.attachedRigidbody.isKinematic = true;
+                col.gameObject.transform.SetParent(this.gameObject.transform);
+            }
+            if (device.GetTouchUp(SteamVR_Controller.ButtonMask.Trigger))
+            {
+                Debug.Log("You have released touch while colliding with " + col.name);
+                col.gameObject.transform.SetParent(null);
+                col.attachedRigidbody.isKinematic = false;
 
-            tossObject(col.attachedRigidbody);
+                tossObject(col.attachedRigidbody);
+            }
         }
     }
 

@@ -7,6 +7,8 @@ public class RotateEnable : MonoBehaviour {
     public GameObject[] icons;
     public GameObject[] uiButtons;
 
+    public GameObject[] uiImages;
+
     public CheckCollider[] colliders;
 
     public float speed = 20.0f;
@@ -49,6 +51,7 @@ public class RotateEnable : MonoBehaviour {
         {
             icons[currentIcon].GetComponentInChildren<Renderer>().material = iconMat;
             icons[currentIcon].GetComponentInChildren<Light>().enabled = true;
+            uiImages[currentIcon].SetActive(true);
         }
         else
         {
@@ -57,6 +60,8 @@ public class RotateEnable : MonoBehaviour {
             icons[currentIcon - 1].GetComponentInChildren<Renderer>().material = greyMat;
             icons[currentIcon - 1].GetComponentInChildren<Light>().enabled = false;
             uiButtons[currentIcon - 1].SetActive(true);
+            uiImages[currentIcon-1].SetActive(false);
+            uiImages[currentIcon ].SetActive(true);
         }
 
         icons[currentIcon].transform.Rotate(Vector3.up, speed * Time.deltaTime);
