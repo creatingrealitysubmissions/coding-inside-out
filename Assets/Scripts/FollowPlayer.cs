@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FollowPlayer : MonoBehaviour {
 
@@ -8,6 +9,7 @@ public class FollowPlayer : MonoBehaviour {
     Transform myPlayerTransfrom;
     Transform myTransform;
     float distance;
+    public GameObject black;
 
     // Use this for initialization
     void Start()
@@ -16,6 +18,16 @@ public class FollowPlayer : MonoBehaviour {
         myTransform = this.GetComponent<Transform>();
         myPlayerTransfrom = myPlayer.transform;
         distance = myPlayerTransfrom.position.z - myTransform.position.z -4;
+        StartCoroutine(Example());
+    }
+    
+
+    IEnumerator Example()
+    {
+        
+        yield return new WaitForSeconds(10);
+        black.SetActive( false);
+
     }
 
     // Update is called once per frame
