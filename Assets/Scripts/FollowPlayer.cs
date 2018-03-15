@@ -15,7 +15,7 @@ public class FollowPlayer : MonoBehaviour {
 
         myTransform = this.GetComponent<Transform>();
         myPlayerTransfrom = myPlayer.transform;
-        distance = myPlayerTransfrom.position.z - myTransform.position.z;
+        distance = myPlayerTransfrom.position.z - myTransform.position.z -4;
     }
 
     // Update is called once per frame

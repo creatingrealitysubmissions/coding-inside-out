@@ -54,21 +54,19 @@ public class ArmUI : MonoBehaviour {
 
     void GoForward () {
 
-        player.Translate(0, 0, 1);
-        //currentPositionx = player.position.x;
-        //currentPositiony = player.position.y;
-        //currentPositionz = player.position.z;
-        //player.position = new Vector3(player.position.x, player.position.y, (player.position.z-1));
+        if (player.position.z > -12)
+        {
+            player.Translate(0, 0, 1);
+        }
+        
 
     }
     void GoBackwards()
     {
-
-        player.Translate(0, 0, -1);
-        //currentPositionx = player.position.x;
-        //currentPositiony = player.position.y;
-        //currentPositionz = player.position.z;
-        //player.position = new Vector3(player.position.x, player.position.y, (player.position.z + 1));
+        if (player.position.z < -0.5)
+        {
+            player.Translate(0, 0, -1);
+        }
 
     }
     void TurnLeft()
@@ -80,4 +78,5 @@ public class ArmUI : MonoBehaviour {
     {
         player.Rotate(0, 90, 0);
     }
+    
 }

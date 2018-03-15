@@ -80,6 +80,10 @@ public class PickupParent : MonoBehaviour {
         {
             player.transform.position = new Vector3(-3.7f, 1.25f, -10.9f);
         }
+        if (col.name == "windowframe")
+        {
+            player.transform.position = new Vector3(-1.48f, 0f, -0.5f);
+        }
 
     }
 

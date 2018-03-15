@@ -20,37 +20,24 @@ public class ColliderType01 : MonoBehaviour {
     }
 
 
-    void OnTriggerStay(Collider other)
+    void OnTriggerEnter(Collider theCollision)
     {
-        //if (other.tag == ("head"))
-        //{
-        //    check = true;
-        //    angleY = myPlayer.transform.rotation.eulerAngles.y;
-
-        //    if (angleY != 180)
-        //    {
-        //        goForward.interactable = false;
-        //        goBackwards.interactable = false;
-        //    }
-        //    else
-        //    {
-        //        goForward.interactable = true;
-        //        goBackwards.interactable = true;
-        //    }
-        //}
-
-        check = true;
-        angleY = myPlayer.transform.rotation.eulerAngles.y;
-
-        if (angleY != 180)
+        if (theCollision.gameObject.tag == "head")
         {
-            goForward.interactable = false;
-            goBackwards.interactable = false;
+            check = true;
+            angleY = myPlayer.transform.rotation.eulerAngles.y;
+
+            if (angleY != 180)
+            {
+                goForward.interactable = false;
+                goBackwards.interactable = false;
+            }
+            else
+            {
+                goForward.interactable = true;
+                goBackwards.interactable = true;
+            }
         }
-        else
-        {
-            goForward.interactable = true;
-            goBackwards.interactable = true;
-        }
+        
     }
 }
